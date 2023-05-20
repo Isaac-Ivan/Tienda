@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Mail\SendWelcome;
+use Illuminate\Support\Facades\Mail;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,4 +16,9 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
+});
+Route::get('/correo', function () {
+    $email =  new SendWelcome;
+    Mail::to('oscarisaac1504@gmail.com')->send($email);
+    return "hola";
 });
