@@ -17,6 +17,10 @@ use Illuminate\Support\Facades\Mail;
 Route::get('/', function () {
     return view('index');
 });
+Route::get('/login', function () {
+    return view('login/login');
+});
+
 Route::get('/correo', function () {
     $email =  new SendWelcome;
     Mail::to('oscarisaac1504@gmail.com')->send($email);

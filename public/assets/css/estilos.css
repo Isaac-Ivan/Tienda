@@ -1,0 +1,39 @@
+
+
+.borde-principal {
+    border: 20px;
+    border-color: #20b2aa;
+}
+
+#demo {
+    height: 100vh;
+    align-items: center; /* Centra verticalmente */
+}
+
+.border-demo {
+    background-color: rgba(255, 255, 255, 0.542);
+    border: 5px solid rgba(63, 66, 61, 0.549);
+    border-radius: 18px;
+}
+
+.bg-person {
+    background: #2bcafc;
+    background: -moz-linear-gradient(
+        left,
+        #2bcafc 0%,
+        #5968ff 50%,
+        #8e1ac5 100%
+    );
+    background: -webkit-linear-gradient(
+        left,
+        #2bcafc 0%,
+        #5968ff 50%,
+        #8e1ac5 100%
+    );
+    background: linear-gradient(
+        to right,
+        #2bcafc 0%,
+        #5968ff 50%,
+        #8e1ac5 100%
+    );
+}
