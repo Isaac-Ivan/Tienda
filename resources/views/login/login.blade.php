@@ -14,7 +14,6 @@
 
     <div class="container-fluid">
         <x-login-component> </x-login-component>
-
     </div>
 
 
