@@ -1,4 +1,4 @@
-body{
+body {
     box-sizing: border-box;
 }
 .borde-principal {
@@ -20,7 +20,6 @@ body{
 }
 
 .bg-person {
-    background: #2bcafc;
     background: -moz-linear-gradient(
         left,
         #2bcafc 0%,
@@ -39,4 +38,25 @@ body{
         #5968ff 50%,
         #8e1ac5 100%
     );
+}
+header {
+    height: 4rem;
+    padding: 1rem;
+}
+
+.bg-header {
+    background-color: rgba(120, 95, 114, 0.436);
+}
+.show-window {
+    display: block;
+}
+.hide-window {
+    display: none;
+}
+.animacion-btn {
+    -webkit-transition: all 500ms ease-in-out;
+    -moz-transition: all 500ms ease-in-out;
+    -ms-transition: all 500ms ease-in-out;
+    -o-transition: all 500ms ease-in-out;
+    transition: all 500ms ease-in-out;
 }

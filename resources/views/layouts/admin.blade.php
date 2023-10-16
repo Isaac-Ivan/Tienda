@@ -10,26 +10,29 @@
 
 </head>
 
-<body class="bg-person container-fluid">
-    <header>
-        <div class="row ">
-            <div class="d-flex justify-content-end">
-                <a class="text-muted" href="">Login</a>
-                <a class="text-muted" href="">Registrar</a>
+<body class="container-fluid bg-person ">
+
+    <header class="bg-header">
+
+        <div class="row d-flex justify-content-end">
+            <div class="col-sm-2  bg-white animacion-btn">
+                <a class="" id="btnGoLogin">Login</a>
+                <a class=" " id="btnGoRegister"> Registrarse</a>
             </div>
         </div>
-
     </header>
 
 
-    <div class="row d-flex justify-content-center " id="demo">
+    <section class="row d-flex justify-content-center " id="demo">
         <div class="col-sm-3 col-md-6 col-lg-3 border-demo">
             @yield('content')
         </div>
-    </div>
+    </section>
 
 </body>
 <script src="{{ asset('assets/js/accesos.js') }}"></script>
+<script src="{{ asset('assets/js/utils.js') }}"></script>
 <script src="{{ asset('assets/js/register-user/register.js') }}"></script>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 </html>

@@ -8,6 +8,7 @@ campoFinal.addEventListener('keydown', (event) => {
         btnEnviar.click();
     }
 });
+
 btnEnviar.addEventListener('click', () => {
     obtenerDatos();
 });
