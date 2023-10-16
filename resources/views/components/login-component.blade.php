@@ -1,5 +1,4 @@
-<div class="row d-flex justify-content-center " id="demo">
-    <div class="col-sm-3 col-md-6 col-lg-3 border-demo">
+
         <h2 class="mb-3 p-3">Iniciar sesion</h2>
 
         <div class="d-flex justify-content-center" >
@@ -17,6 +16,3 @@
                 <button class="btn btn-primary mt-3 " id="btnEnviar" type="button">Enviar</button>
             </div>
         </form>
-
-    </div>
-</div>

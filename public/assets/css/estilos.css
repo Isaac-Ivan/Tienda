@@ -1,3 +1,6 @@
+body{
+    box-sizing: border-box;
+}
 .borde-principal {
     border: 20px;
     border-color: #20b2aa;
