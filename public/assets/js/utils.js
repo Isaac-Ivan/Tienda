@@ -5,6 +5,8 @@ const btnGoRegister = document.getElementById('btnGoRegister');
 const loginComponent = document.getElementById('showLogin');
 const registerComponent = document.getElementById('showRegister');
 
+
+
 btnGoLogin.addEventListener('click', (event) => {
     registerComponent.classList.replace('show-window', 'hide-window');
     loginComponent.classList.replace('hide-window', 'show-window');
@@ -16,3 +18,6 @@ btnGoRegister.addEventListener('click', (event) => {
     registerComponent.classList.replace('hide-window', 'show-window');
     event.preventDefault();
 });
+
+
+

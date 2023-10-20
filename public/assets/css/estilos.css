@@ -53,10 +53,65 @@ header {
 .hide-window {
     display: none;
 }
-.animacion-btn {
-    -webkit-transition: all 500ms ease-in-out;
-    -moz-transition: all 500ms ease-in-out;
-    -ms-transition: all 500ms ease-in-out;
-    -o-transition: all 500ms ease-in-out;
-    transition: all 500ms ease-in-out;
+
+.list-group-item:hover {
+    animation: alternate-reverse;
+    background-color: #20b2aa;
+    border-radius: 10px;
+}
+.nav-link {
+    text-decoration: underline;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    padding: 58px 0 0; /* Height of navbar */
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+    width: 240px;
+    z-index: 600;
+}
+
+@media (max-width: 991.98px) {
+    .sidebar {
+        width: 100%;
+    }
+    .content {
+        margin: -270px;
+    }
+}
+@media (max-width: 200px) {
+    .panel {
+        margin-left: -240px;
+    }
+}
+.sidebar .active {
+    border-radius: 5px;
+    box-shadow: 0 2px 5px 0 rgb(0 0 0 / 16%), 0 2px 10px 0 rgb(0 0 0 / 12%);
+}
+.sidebar-sticky {
+    position: relative;
+    top: 0;
+    height: calc(100vh - 48px);
+    padding-top: 0.5rem;
+    overflow-x: hidden;
+    overflow-y: auto; /* Scrollable contents if viewport is shorter than content. */
+}
+.content {
+    margin-left: 240px; /* Ajusta el margen para dar espacio a la barra lateral */
+    padding: 20px;
+    height: 100%; /* Abarcará toda la altura de la ventana */
+}
+
+.panel {
+    height: 600px;
+    width: 84%;
+    padding: 20px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
 }

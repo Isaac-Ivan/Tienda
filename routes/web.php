@@ -19,6 +19,10 @@ Route::get('/', function () {
     return view('login/login');
 });
 
+Route::get('/index', function () {
+    return view('web/index');
+});
+
 Route::get('/correo', function () {
     $email =  new SendWelcome;
     Mail::to('oscarisaac1504@gmail.com')->send($email);

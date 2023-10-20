@@ -15,15 +15,15 @@
     <header class="bg-header">
 
         <div class="row d-flex justify-content-end">
-            <div class="col-sm-2  bg-white animacion-btn">
-                <a class="" id="btnGoLogin">Login</a>
-                <a class=" " id="btnGoRegister"> Registrarse</a>
+            <div class="col-sm-2 ">
+                <span class=""><a class="text-white" href="" id="btnGoLogin">Login</a></span>
+                <span> <a class="" href="" id="btnGoRegister"> Registrarse</a></span>
             </div>
         </div>
     </header>
 
 
-    <section class="row d-flex justify-content-center " id="demo">
+    <section class="row d-flex justify-content-center" id="demo">
         <div class="col-sm-3 col-md-6 col-lg-3 border-demo">
             @yield('content')
         </div>
