@@ -10,10 +10,10 @@ campoFinal.addEventListener('keydown', (event) => {
 });
 
 btnEnviar.addEventListener('click', () => {
-    obtenerDatos();
+    obtenerData();
 });
 
-function obtenerDatos() {
+function obtenerData() {
     const form = document.getElementById('formulario');
     const formData = new FormData(form);
     const data = {};
@@ -44,8 +44,16 @@ const login = (data) => {
         .then(data => {
             console.log(data);
             if (data.res === "true") {
-                window.location.href = "http://127.0.0.1:8000/";
+                window.location.href = "http://127.0.0.1:8000/index";
+                localStorage.setItem('user', JSON.stringify(data.info));
+            } else {
+                Swal.fire(
+                    'Upss',
+                    data.msg,
+                    'info'
+                )
             }
+
         })
         .catch(error => {
             // Manejar errores

@@ -44,8 +44,9 @@
 
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="{{ asset('assets/js/sesion.js') }}"></script>
 <script src="{{ asset('assets/js/utils.js') }}"></script>
 <script src="{{ asset('assets/js/side-bar/botones.js') }}"></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </html>

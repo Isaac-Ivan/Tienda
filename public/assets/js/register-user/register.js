@@ -61,12 +61,16 @@ const registerUser = (data) => {
         })
         .then(data => {
             console.log(data);
-
-            alert('todo chido')
-
         })
         .catch(error => {
             // Manejar errores
             console.error('Error: ' + error);
         });
+}
+
+
+if(condicion){
+
+}else{
+
 }
