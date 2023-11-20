@@ -3,35 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Cuaderno;
+use App\Models\Libros;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class CuadernoController extends Controller
+class LibrosController extends Controller
 {
     public function __construct()
     {
         date_default_timezone_set('America/Mexico_City');
     }
+
     public function Listar()
     {
-        $query = Cuaderno::paginate(10);
+        $query = Libros::paginate(10);
         return response([
             'res' => true,
             'msg' => $query
         ], 200);
     }
-
     public function Registrar(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'nombre' => 'required',
-            'marca' => 'required',
+            'titulo' => 'required',
+            'autor' => 'required',
+            'isbn' => 'required',
+            'anio_publicacion' => 'required',
+            'editorial' => 'required',
             'precio' => 'required',
             'stock' => 'required',
         ]);
+
         if ($validator->fails()) {
             return response([
                 'res' => false,
@@ -41,13 +45,16 @@ class CuadernoController extends Controller
         DB::beginTransaction();
         try {
             $data = [
-                'nombre' => $request->nombre,
-                'marca' => $request->marca,
+                'titulo' => $request->titulo,
+                'autor' => $request->autor,
+                'isbn' => $request->isbn,
+                'anio_publicacion' => $request->anio_publicacion,
+                'editorial' => $request->editorial,
                 'precio' => $request->precio,
-                'stock' => $request->stock
+                'stock' => $request->stock,
             ];
 
-            $query = Cuaderno::create($data);
+            $query = Libros::create($data);
             DB::commit();
             return response([
                 'res' => true,
@@ -76,7 +83,7 @@ class CuadernoController extends Controller
             ], 200);
         }
 
-        $query = Cuaderno::where('id', "=", $request->id)->first();
+        $query = Libros::where('id', "=", $request->id)->first();
         if ($query === null) {
             return response([
                 'res' => false,
@@ -86,7 +93,7 @@ class CuadernoController extends Controller
 
         DB::beginTransaction();
         try {
-            Cuaderno::where('id', "=", $request->id)->delete();
+            Libros::where('id', "=", $request->id)->delete();
             DB::commit();
             return response([
                 'res' => true,
@@ -101,12 +108,16 @@ class CuadernoController extends Controller
         }
     }
 
+
     public function Editar(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required',
-            'nombre' => 'required',
-            'marca' => 'required',
+            'titulo' => 'required',
+            'autor' => 'required',
+            'isbn' => 'required',
+            'anio_publicacion' => 'required',
+            'editorial' => 'required',
             'precio' => 'required',
             'stock' => 'required',
         ]);
@@ -117,11 +128,14 @@ class CuadernoController extends Controller
             ], 200);
         }
 
-        $registro = Cuaderno::find($request->id);
+        $registro = Libros::find($request->id);
 
         if ($registro != null) {
-            $registro->nombre = $request->nombre;
-            $registro->marca = $request->marca;
+            $registro->titulo = $request->titulo;
+            $registro->autor = $request->autor;
+            $registro->isbn= $request->isbn;
+            $registro->anio_publicacion = $request->anio_publicacion;
+            $registro->editorial = $request->editorial;
             $registro->precio = $request->precio;
             $registro->stock = $request->stock;
             $registro->save();

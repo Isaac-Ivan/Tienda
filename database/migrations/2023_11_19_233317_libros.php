@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('titulo');
             $table->string('autor');
             $table->string('isbn');
-            $table->date('anio_publicacion');
+            $table->integer('anio_publicacion');
             $table->string('editorial');
             $table->double('precio');
             $table->integer('stock');

@@ -32,4 +32,20 @@ Route::post('/eliminar-cuaderno', [App\Http\Controllers\CuadernoController::clas
 
 Route::post('/editar-cuaderno', [App\Http\Controllers\CuadernoController::class, 'Editar']);
 
+//Servicios para la interaccion con los libros (CRUD)
+
+Route::get('/listar-libro', [App\Http\Controllers\LibrosController::class, 'Listar']);
+
+Route::post('/register-libro', [App\Http\Controllers\LibrosController::class, 'Registrar']);
+
+Route::post('/eliminar-libro', [App\Http\Controllers\LibrosController::class, 'Eliminar']);
+
+Route::post('/editar-libro', [App\Http\Controllers\LibrosController::class, 'Editar']);
+
+
+
+
+
+
+
 
