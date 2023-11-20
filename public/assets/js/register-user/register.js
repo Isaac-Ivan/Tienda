@@ -67,10 +67,3 @@ const registerUser = (data) => {
             console.error('Error: ' + error);
         });
 }
-
-
-if(condicion){
-
-}else{
-
-}

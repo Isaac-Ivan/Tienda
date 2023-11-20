@@ -30,7 +30,7 @@ class LoginController extends Controller
         }
 
         try {
-            $user = DB::table('users')->select('correo', 'nombre', 'apellido_paterno', 'apellido_paterno', 'telefono', 'rol', 'iduser')->where('correo', $request->input('email'))->where('password', md5($request->input('pwd')))->first();
+            $user = DB::table('users')->select('correo', 'nombre', 'ap_paterno', 'ap_materno', 'telefono', 'rol', 'iduser')->where('correo', $request->input('email'))->where('password', md5($request->input('pwd')))->first();
 
             if ($user === null) {
                 return response([

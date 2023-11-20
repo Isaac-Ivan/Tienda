@@ -23,16 +23,6 @@
         </thead>
         <tbody>
             <tr>
-                <td>Toyota</td>
-                <td>Camry</td>
-                <td>2022</td>
-                <td>Gris</td>
-                <td>$25,000</td>
-                <td>2.5L 4 cilindros</td>
-                <td>Automática</td>
-                <td>Delantera</td>
-            </tr>
-            <tr>
                 <td>Honda</td>
                 <td>Civic</td>
                 <td>2022</td>
