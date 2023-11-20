@@ -10,7 +10,7 @@ class UserRegister extends Model
     use HasFactory;
 
     protected $fillable = [
-        'correo',
+        'email',
         'nombre' ,
         'password',
         'rol'
