@@ -19,13 +19,20 @@ class UserController extends Controller
             'nombre' => 'required',
             'rol' => 'required',
         ]);
+        if ($validator->fails()) {
+            return response([
+                'res' => false,
+                'msg' => "Todos los campos son necesarios"
+            ], 200);
+        }
+        DB::beginTransaction();
         try {
 
             $email = DB::table('users')->select('email')->where('email', $request->input('email'))->first();
 
             if ($email != null) {
                 return response([
-                    'res' => 'false',
+                    'res' => false,
                     'msg' => 'El correo ya se encuentra registrado'
                 ], 200);
             }
@@ -38,13 +45,16 @@ class UserController extends Controller
             ];
 
             $query = UserRegister::create($data);
+            DB::commit();
+
             return response([
-                'res' => 'true',
+                'res' => true,
                 'msg' => 'Cuenta registrada exitosamente'
             ], 200);
         } catch (Exception $e) {
+            DB::rollback();
             return response([
-                'res' => 'false',
+                'res' => false,
                 'msg' => $e->getMessage(),
             ], 200);
         }
@@ -67,22 +77,24 @@ class UserController extends Controller
                 'msg' => 'Todos los campos son requeridos.'
             ], 200);
         }
+        DB::beginTransaction();
 
         try {
             $user = DB::table('users')->select('email', 'nombre', 'rol', 'id')->where('email', $request->input('email'))->where('password', md5($request->input('pwd')))->first();
 
             if ($user === null) {
                 return response([
-                    'res' => 'false',
+                    'res' => false,
                     'msg' => 'Verifique que la contraseña o el correo existan.'
                 ], 200);
             }
-
+            DB::commit();
             return response([
-                'res' => 'true',
-                'info'=> $user
+                'res' => true,
+                'info' => $user
             ], 200);
         } catch (Exception $e) {
+            DB::rollback();
             return response([
                 'res' => false,
                 'msg' => $e->getMessage()

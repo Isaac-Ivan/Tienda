@@ -22,5 +22,14 @@ Route::post('/login', [App\Http\Controllers\UserController::class, 'login']);
 
 Route::post('/register-user', [App\Http\Controllers\UserController::class, 'Register']);
 
+//Servicios para la interaccion con los cuadernos (CRUD)
+
+Route::get('/listar-cuaderno', [App\Http\Controllers\CuadernoController::class, 'Listar']);
+
+Route::post('/register-cuaderno', [App\Http\Controllers\CuadernoController::class, 'Registrar']);
+
+Route::post('/eliminar-cuaderno', [App\Http\Controllers\CuadernoController::class, 'Eliminar']);
+
+Route::post('/editar-cuaderno', [App\Http\Controllers\CuadernoController::class, 'Editar']);
 
 
