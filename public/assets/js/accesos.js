@@ -43,7 +43,8 @@ const login = (data) => {
         })
         .then(data => {
             console.log(data);
-            if (data.res === "true") {
+            console.log(data.info);
+            if (data.res === true) {
                 window.location.href = "http://127.0.0.1:8000/index";
                 localStorage.setItem('user', JSON.stringify(data.info));
             } else {

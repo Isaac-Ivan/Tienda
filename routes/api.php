@@ -42,8 +42,17 @@ Route::post('/eliminar-libro', [App\Http\Controllers\LibrosController::class, 'E
 
 Route::post('/editar-libro', [App\Http\Controllers\LibrosController::class, 'Editar']);
 
+//Servicios para interaccion con Proveedores
 
+Route::post('/register-proveedor', [App\Http\Controllers\ProveedoresController::class, 'Insertar']);
 
+Route::post('/editar-proveedor', [App\Http\Controllers\ProveedoresController::class, 'Editar']);
+
+Route::post('/eliminar-proveedor', [App\Http\Controllers\ProveedoresController::class, 'Eliminar']);
+
+Route::get('/listar-proveedor', [App\Http\Controllers\ProveedoresController::class, 'Listar']);
+
+//Servicio para interaccion con Clientes
 
 
 
