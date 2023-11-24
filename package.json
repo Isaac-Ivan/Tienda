@@ -10,6 +10,7 @@
         "vite": "^4.0.0"
     },
     "dependencies": {
-        "sweetalert2": "^11.7.32"
+        "bootstrap-icons": "^1.11.2",
+        "sweetalert2": "^11.10.1"
     }
 }

@@ -1,0 +1,32 @@
+:root {
+    --prymary: #4682b4;
+    --light: #ffffff;
+    --grey: #efefef;
+}
+
+body {
+    overflow: hidden;
+    font-family: "Muli", sans-serif;
+    font-weight: 300;
+    color: var(--prymary);
+}
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline;
+}
+
+.bg-primary {
+    background-color: #266ab1!important;
+}
+#sidebar-container {
+    min-height: 100vh;
+}
+#sidebar-container .logo {
+    padding: 0.875rem 1.25rem;
+}
+#sidebar-container .menu {
+    width: 14rem;
+}
+
