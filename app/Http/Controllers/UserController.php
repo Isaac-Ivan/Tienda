@@ -3,102 +3,59 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\UserRegister;
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+    public function __construct()
+    {
+        date_default_timezone_set('America/Mexico_City');
+    }
     public function Register(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'nombre' => 'required',
             'email' => 'required',
             'pwd' => 'required',
-            'nombre' => 'required',
-            'rol' => 'required',
         ]);
-        if ($validator->fails()) {
-            return response([
-                'res' => false,
-                'msg' => "Todos los campos son necesarios"
-            ], 200);
-        }
-        DB::beginTransaction();
-        try {
 
-            $email = DB::table('users')->select('email')->where('email', $request->input('email'))->first();
+        $user = new User();
+        $user->nombre = $request->nombre;
+        $user->email = $request->email;
+        $user->password = Hash::make($request->password);
+        $user->rol = 1;
 
-            if ($email != null) {
-                return response([
-                    'res' => false,
-                    'msg' => 'El correo ya se encuentra registrado'
-                ], 200);
-            }
+        $user->save();
+        Auth::login($user);
+        return redirect(route('inicio'));
+    }
 
-            $data = [
-                'email' => $request->email,
-                'password' => md5($request->pwd),
-                'nombre' => $request->nombre,
-                'rol' => $request->rol
-            ];
-
-            $query = UserRegister::create($data);
-            DB::commit();
-
-            return response([
-                'res' => true,
-                'msg' => 'Cuenta registrada exitosamente'
-            ], 200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response([
-                'res' => false,
-                'msg' => $e->getMessage(),
-            ], 200);
+    public function Login(Request $request)
+    {
+        $credentials = [
+            "email" => $request->email,
+            "password" => $request->password
+        ];
+        $remember = ($request->has('remember') ? true : false);
+        if (Auth::attempt($credentials, $remember)) {
+            $request->session()->regenerate();
+            return redirect()->intended(route('inicio'));
+        } else {
+            return redirect(route('login'));
         }
     }
 
-    public function login(Request $request)
+    public function Logout(Request $request)
     {
-        $request->input('email');
-        $request->input('pwd');
-
-        $validator = Validator::make($request->all(), [
-            'email' => 'required',
-            'pwd' => 'required',
-        ]);
-
-
-        if ($validator->fails()) {
-            return response([
-                'res' => 'false',
-                'msg' => 'Todos los campos son requeridos.'
-            ], 200);
-        }
-        DB::beginTransaction();
-
-        try {
-            $user = DB::table('users')->select('email', 'nombre', 'rol', 'id')->where('email', $request->input('email'))->where('password', md5($request->input('pwd')))->first();
-
-            if ($user === null) {
-                return response([
-                    'res' => false,
-                    'msg' => 'Verifique que la contraseña o el correo existan.'
-                ], 200);
-            }
-            DB::commit();
-            return response([
-                'res' => true,
-                'info' => $user
-            ], 200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response([
-                'res' => false,
-                'msg' => $e->getMessage()
-            ], 200);
-        }
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+        return redirect(route('login'));
     }
 }
