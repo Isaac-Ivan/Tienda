@@ -2,11 +2,12 @@
 
 namespace App\View\Components;
 
+use App\Http\Controllers\LibrosController;
 use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
 
-class InventariosComponent extends Component
+class LibrosComponent extends Component
 {
     /**
      * Create a new component instance.
@@ -15,12 +16,18 @@ class InventariosComponent extends Component
     {
         //
     }
-
     /**
      * Get the view / contents that represent the component.
      */
+    public $libros;
     public function render(): View|Closure|string
     {
-        return view('components.inventarios-component');
+        {
+            $librosController = new LibrosController();
+            $this->libros = $librosController->Listar();
+            return view('components.libros-component', [
+                'libros' => $this->libros,
+            ]);
+        }
     }
 }

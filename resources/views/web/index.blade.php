@@ -2,7 +2,7 @@
 @section('content-app')
 <div class=" content panel">
     <div class="hide-window" id="inventariosComponent">
-        <x-inventarios-component></x-inventarios-component>
+        <x-libros-component></x-libros-component>
     </div>
     <div class="hide-window" id="proveedoresComponent">
         <x-proveedores-component></x-proveedores-component>

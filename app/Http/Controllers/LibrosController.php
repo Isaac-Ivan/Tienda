@@ -18,11 +18,8 @@ class LibrosController extends Controller
 
     public function Listar()
     {
-        $query = Libros::paginate(10);
-        return response([
-            'res' => true,
-            'msg' => $query
-        ], 200);
+        $query = Libros::all();
+        return $query;
     }
     public function Registrar(Request $request)
     {

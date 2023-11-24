@@ -12,7 +12,7 @@
 
 <body class="container-fluid bg-person ">
 
-    <header class="bg-header">
+    {{-- <header class="bg-header">
 
         <div class="row d-flex justify-content-end">
             <div class="col-sm-2 ">
@@ -20,7 +20,7 @@
                 <span> <a class="" href="" id="btnGoRegister"> Registrarse</a></span>
             </div>
         </div>
-    </header>
+    </header> --}}
 
 
     <section class="row d-flex justify-content-center" id="demo">

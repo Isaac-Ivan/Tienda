@@ -1,6 +1,6 @@
 
 //BOTONES
-const btnInventarios = document.getElementById('btnInventarios');
+const btnLibros = document.getElementById('btnLibros');
 const btnProveedores = document.getElementById('btnProveedores');
 // const btnPagos = document.getElementById('btnPagos');
 const btnCloseComponent = document.getElementsByName('btn-cancel');
@@ -11,7 +11,7 @@ const proveedoresComponent = document.getElementById('proveedoresComponent');
 // const pagosComponent = document.getElementById('pagosComponent');
 
 //Acciones
-btnInventarios.addEventListener('click', (event) => {
+btnLibros.addEventListener('click', (event) => {
     if (inventariosComponent.classList.contains('hide-window')) {
         inventariosComponent.classList.replace('hide-window', 'show-window');
         proveedoresComponent.classList.replace('show-window', 'hide-window');

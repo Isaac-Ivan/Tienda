@@ -20,8 +20,11 @@
             <div class="position-sticky">
                 <div class="list-group list-group-flush mx-3 mt-4">
 
-                    <button class="list-group-item list-group-item-action py-2 ripple" id="btnInventarios" aria-current="true">
-                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Inventarios</span>
+                    <button class="list-group-item list-group-item-action py-2 ripple" id="btnLibros" aria-current="true">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Libros</span>
+                    </button>
+                    <button class="list-group-item list-group-item-action py-2 ripple" id="btnCuadernos">
+                        <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Cuadernos</span>
                     </button>
                     <button class="list-group-item list-group-item-action py-2 ripple" id="btnProveedores">
                         <i class="fas fa-tachometer-alt fa-fw me-3"></i><span>Proveedores</span>
