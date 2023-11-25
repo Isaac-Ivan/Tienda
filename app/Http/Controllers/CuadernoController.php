@@ -17,11 +17,8 @@ class CuadernoController extends Controller
     }
     public function Listar()
     {
-        $query = Cuaderno::paginate(10);
-        return response([
-            'res' => true,
-            'msg' => $query
-        ], 200);
+        $query = Cuaderno::all();
+        return $query;
     }
 
     public function Registrar(Request $request)

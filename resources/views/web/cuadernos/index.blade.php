@@ -1,4 +1,4 @@
 @extends('layouts.admin-app')
 @section('content-app')
-<h1>Index</h1>
+    <x-cuadernos-component></x-cuadernos-component>
 @endsection

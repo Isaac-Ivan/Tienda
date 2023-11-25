@@ -22,12 +22,10 @@ class LibrosComponent extends Component
     public $libros;
     public function render(): View|Closure|string
     {
-        {
-            $librosController = new LibrosController();
-            $this->libros = $librosController->Listar();
-            return view('components.libros-component', [
-                'libros' => $this->libros,
-            ]);
-        }
+        $librosController = new LibrosController();
+        $this->libros = $librosController->Listar();
+        return view('components.libros-component', [
+            'libros' => $this->libros,
+        ]);
     }
 }

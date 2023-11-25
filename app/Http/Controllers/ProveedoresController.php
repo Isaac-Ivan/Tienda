@@ -53,13 +53,10 @@ class ProveedoresController extends Controller
             ], 200);
         }
     }
-    public function Listar(Request $request)
+    public function Listar()
     {
-        $query = Proveedores::paginate(10);
-        return response([
-            'res' => true,
-            'msg' => $query
-        ], 200);
+        $query = Proveedores::all();
+        return $query;
     }
     public function Editar(Request $request)
     {

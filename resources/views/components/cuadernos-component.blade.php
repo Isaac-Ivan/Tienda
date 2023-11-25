@@ -1,22 +1,22 @@
 <div>
-    <h1>Proveedores</h1>
+    <h1>Cuadernos</h1>
     <table class="table table-bordered table-responsive">
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Correo</th>
-                <th>Teléfono</th>
-                <th>Dirección</th>
+                <th>Marca</th>
+                <th>Precio</th>
+                <th>Stock</th>
                 <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($proveedores as $item)
+            @foreach ($cuadernos as $item)
                 <tr>
                     <td>{{ $item->nombre }}</td>
-                    <td>{{ $item->email }}</td>
-                    <td>{{ $item->telefono }}</td>
-                    <td>{{ $item->direccion}}</td>
+                    <td>{{ $item->marca }}</td>
+                    <td>{{ $item->precio }}</td>
+                    <td>{{ $item->stock }}</td>
                     <td></td>
                 </tr>
             @endforeach

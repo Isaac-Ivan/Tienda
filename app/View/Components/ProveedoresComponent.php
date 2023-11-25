@@ -2,6 +2,7 @@
 
 namespace App\View\Components;
 
+use App\Http\Controllers\ProveedoresController;
 use Closure;
 use Illuminate\View\Component;
 use Illuminate\Contracts\View\View;
@@ -19,8 +20,13 @@ class ProveedoresComponent extends Component
     /**
      * Get the view / contents that represent the component.
      */
+    public $proveedores;
     public function render(): View|Closure|string
     {
-        return view('components.proveedores-component');
+        $proveedoresController = new ProveedoresController();
+        $this->proveedores = $proveedoresController->Listar();
+        return view('components.proveedores-component', [
+            'cuadernos' => $this->proveedores,
+        ]);
     }
 }

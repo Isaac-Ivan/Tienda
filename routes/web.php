@@ -32,6 +32,14 @@ Route::get('/libros', function () {
     return view('web/libros/index');
 })->middleware('auth')->name('libros-index');
 
+Route::get('/cuadernos', function () {
+    return view('web/cuadernos/index');
+})->middleware('auth')->name('cuadernos-index');
+
+Route::get('/proveedores', function () {
+    return view('web/proveedores/index');
+})->middleware('auth')->name('proveedores-index');
+
 
 
 
