@@ -4,25 +4,30 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Libro</title>
+    <link rel="shortcut icon" href="{{ asset('assets/iconos/192350.svg') }}" />
     <link rel="stylesheet" href="{{ asset('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <title>LibrITTLA</title>
 </head>
 
 <body class="bg-person">
     {{-- <header>
         <div class="d-flex justify-content-end">
-            <a href="{{ route('logout') }}">
-                <button class="btn btn-primary">Salir</button>
-            </a>
+
         </div>
     </header> --}}
     <div class="d-flex">
         <div class="bg-primary" id="sidebar-container">
             <div class="logo">
-                <h4 ><a class="text-light font-weight-bold" href="{{route('inicio')}}">LibrITTLA</a></h4>
+                <h4>
+                    <a class="text-light font-weight-bold" href="{{ route('inicio') }}">
+                        <img width="60" height="60" src="{{ asset('assets/iconos/192350.svg') }}">
+                        LibrITTLA
+                    </a>
+                </h4>
             </div>
             <div class="menu">
+
                 <a href="{{ route('libros-index') }}" class="d-block text-light p-3">
                     <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
                         class="bi bi-book" viewBox="0 0 16 16">
@@ -62,8 +67,19 @@
                             d="M5 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 5 8m0-2.5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m0 5a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5m-1-5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0M4 8a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0m0 2.5a.5.5 0 1 1-1 0 .5.5 0 0 1 1 0" />
                     </svg>
                     Pedidos</a>
+
+                <a class="d-block text-light p-3 " href="{{ route('logout') }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor"
+                        class="bi bi-box-arrow-left" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd"
+                            d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0z" />
+                        <path fill-rule="evenodd"
+                            d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z" />
+                    </svg> Salir
+                </a>
             </div>
         </div>
+
         <div class="w-100">
             <nav class="navbar navbar-expand-lg bg-body-tertiary">
                 <div class="container-fluid">
@@ -95,13 +111,14 @@
                     </div>
                 </div>
             </nav>
-            <div id="content">
+            <div class="p-3 m-3 " id="content">
                 @yield('content-app')
             </div>
         </div>
     </div>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    @yield('scripts')
 </body>
 
 </html>

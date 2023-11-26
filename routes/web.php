@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\LibrosController;
 use Illuminate\Support\Facades\Route;
 use App\Mail\SendWelcome;
 use Illuminate\Support\Facades\Mail;
@@ -24,9 +26,8 @@ Route::get('/registrar', function () {
     return view('registro/registro');
 })->name('registro');
 
-Route::get('/index', function () {
-    return view('web/index');
-})->middleware('auth')->name('inicio');
+Route::get('/index', [HomeController::class, 'inicio'])->middleware('auth')->name('inicio');
+
 
 Route::get('/libros', function () {
     return view('web/libros/index');
@@ -47,6 +48,10 @@ Route::get('/proveedores', function () {
 Route::post('/validad-registro', [UserController::class, 'Register'])->name('validar-registro');
 Route::post('/inicia-sesion', [UserController::class, 'Login'])->name('iniciar-sesion');
 Route::get('/logout', [UserController::class, 'Logout'])->name('logout');
+
+Route::post('/edit-libro', [LibrosController::class, 'Editar'])->name('edit-libro');
+Route::post('/delete-libro', [LibrosController::class, 'Eliminar'])->name('delete-libro');
+Route::post('/create-libro', [LibrosController::class, 'Registrar'])->name('create-libro');
 
 
 

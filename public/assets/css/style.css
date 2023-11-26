@@ -6,7 +6,7 @@
 
 body {
     overflow: hidden;
-    font-family: "Muli", sans-serif;
+    font-family:  Georgia, 'PT Sans', Verdana, sans-serif;
     font-weight: 300;
     color: var(--prymary);
 }
@@ -31,6 +31,10 @@ a {
 .bg-primary {
     background-color: #266ab1 !important;
 }
+.bg-contenido{
+    background-color: #e0ffc7;
+    border: 2px solid rgb(113, 101, 101);
+}
 #sidebar-container {
     min-height: 100vh;
 }
@@ -44,8 +48,8 @@ svg {
     margin-right: 5px;
 }
 #content{
-    overflow-y:auto ;
-    height: 100vh;
+    overflow-y: auto ;
+    height: 90vh;
     padding: 5rem;
 }
 
@@ -53,4 +57,9 @@ svg {
     #sidebar-container {
     display: none;
     }
+}
+
+.bg-graficas{
+margin: 10px 10px;
+padding: 10px 10px;
 }

@@ -33,53 +33,21 @@ class LibrosController extends Controller
             'stock' => 'required',
         ]);
 
-        if ($validator->fails()) {
-            return response([
-                'res' => false,
-                'msg' => "Todos los elementos son requeridos",
-            ], 200);
-        }
-        DB::beginTransaction();
-        try {
-            $data = [
-                'titulo' => $request->titulo,
-                'autor' => $request->autor,
-                'isbn' => $request->isbn,
-                'anio_publicacion' => $request->anio_publicacion,
-                'editorial' => $request->editorial,
-                'precio' => $request->precio,
-                'stock' => $request->stock,
-            ];
-
-            $query = Libros::create($data);
-            DB::commit();
-            return response([
-                'res' => true,
-                'msg' => $query->id
-            ], 200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response([
-                'res' => false,
-                'msg' => $e->getMessage()
-            ], 200);
-        }
+        $data = [
+            'titulo' => $request->titulo,
+            'autor' => $request->autor,
+            'isbn' => $request->isbn,
+            'anio_publicacion' => $request->anio_publicacion,
+            'editorial' => $request->editorial,
+            'precio' => $request->precio,
+            'stock' => $request->stock,
+        ];
+        $query = Libros::create($data);
+        return redirect(route('libros-index'));
     }
 
     public function Eliminar(Request $request)
     {
-        $validator = Validator::make($request->all(), [
-            'id' => 'required',
-        ]);
-
-
-        if ($validator->fails()) {
-            return response([
-                'res' => false,
-                'msg' => "El id es necesario."
-            ], 200);
-        }
-
         $query = Libros::where('id', "=", $request->id)->first();
         if ($query === null) {
             return response([
@@ -87,29 +55,15 @@ class LibrosController extends Controller
                 'msg' => "Este producto no existe."
             ], 200);
         }
-
-        DB::beginTransaction();
-        try {
-            Libros::where('id', "=", $request->id)->delete();
-            DB::commit();
-            return response([
-                'res' => true,
-                'msg' => "El producto se elimino exitosamente."
-            ], 200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response([
-                'res' => false,
-                'msg' => $e->getMessage()
-            ], 200);
-        }
+        Libros::where('id', "=", $request->id)->delete();
+        return redirect(route('libros-index'));
     }
 
 
     public function Editar(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'id' => 'required',
+            'ids' => 'required',
             'titulo' => 'required',
             'autor' => 'required',
             'isbn' => 'required',
@@ -118,33 +72,23 @@ class LibrosController extends Controller
             'precio' => 'required',
             'stock' => 'required',
         ]);
-        if ($validator->fails()) {
-            return response([
-                'res' => false,
-                'msg' => "Todos los campos son necesarios"
-            ], 200);
-        }
-
+        // if ($validator->fails()) {
+        //     return response([
+        //         'res' => false,
+        //         'msg' => "Todos los campos son necesarios"
+        //     ], 200);
+        // }
         $registro = Libros::find($request->id);
-
         if ($registro != null) {
             $registro->titulo = $request->titulo;
             $registro->autor = $request->autor;
-            $registro->isbn= $request->isbn;
+            $registro->isbn = $request->isbn;
             $registro->anio_publicacion = $request->anio_publicacion;
             $registro->editorial = $request->editorial;
             $registro->precio = $request->precio;
             $registro->stock = $request->stock;
             $registro->save();
-            return response([
-                'res' => true,
-                'msg' => "Registro actualizado correctamente"
-            ], 200);
+            return redirect(route('libros-index'));
         }
-
-        return response([
-            'res' => false,
-            'msg' => "No se encontro el registro"
-        ], 200);
     }
 }
