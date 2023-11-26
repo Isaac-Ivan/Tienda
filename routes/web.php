@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CuadernoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LibrosController;
@@ -53,6 +54,9 @@ Route::post('/edit-libro', [LibrosController::class, 'Editar'])->name('edit-libr
 Route::post('/delete-libro', [LibrosController::class, 'Eliminar'])->name('delete-libro');
 Route::post('/create-libro', [LibrosController::class, 'Registrar'])->name('create-libro');
 
+Route::post('/edit-cuaderno', [CuadernoController::class, 'Editar'])->name('edit-cuaderno');
+Route::post('/delete-cuaderno', [CuadernoController::class, 'Eliminar'])->name('delete-cuaderno');
+Route::post('/create-cuaderno', [CuadernoController::class, 'Registrar'])->name('create-cuaderno');
 
 
 // Route::get('/correo', function () {
