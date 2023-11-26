@@ -37,13 +37,13 @@
                                 data-bs-target="#modal{{ $valor->id }}">
                                 Editar
                             </button>
+                            <form method="POST" action="{{ route('delete-libro') }}">
                             <button type="submit" class="btn btn-danger m-1" type="button">Eliminar
-                                <form method="POST" action="{{ route('delete-libro') }}">
                                     @csrf
                                     <input type="number" id="idInput" name="id" value="{{ $valor->id }}"
-                                        style="display: none">
-                                </form>
-                            </button>
+                                    style="display: none">
+                                </button>
+                            </form>
                         </div>
                     </td>
                 </tr>

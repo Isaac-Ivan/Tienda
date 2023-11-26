@@ -4,6 +4,7 @@ use App\Http\Controllers\CuadernoController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LibrosController;
+use App\Http\Controllers\ProveedoresController;
 use Illuminate\Support\Facades\Route;
 use App\Mail\SendWelcome;
 use Illuminate\Support\Facades\Mail;
@@ -57,6 +58,12 @@ Route::post('/create-libro', [LibrosController::class, 'Registrar'])->name('crea
 Route::post('/edit-cuaderno', [CuadernoController::class, 'Editar'])->name('edit-cuaderno');
 Route::post('/delete-cuaderno', [CuadernoController::class, 'Eliminar'])->name('delete-cuaderno');
 Route::post('/create-cuaderno', [CuadernoController::class, 'Registrar'])->name('create-cuaderno');
+
+
+Route::post('/edit-proveedor', [ProveedoresController::class, 'Editar'])->name('edit-proveedor');
+Route::post('/create-proveedor', [ProveedoresController::class, 'Registrar'])->name('create-proveedor');
+Route::post('/delete-proveedor', [ProveedoresController::class, 'Eliminar'])->name('delete-proveedor');
+
 
 
 // Route::get('/correo', function () {

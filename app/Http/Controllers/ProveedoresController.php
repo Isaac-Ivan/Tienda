@@ -15,7 +15,7 @@ class ProveedoresController extends Controller
     {
         date_default_timezone_set('America/Mexico_City');
     }
-    public function Insertar(Request $request)
+    public function Registrar(Request $request)
     {
         $validator = Validator::make($request->all(), [
             'nombre' => 'required',
@@ -30,28 +30,16 @@ class ProveedoresController extends Controller
                 'msg' => "Todos los elementos son requeridos",
             ], 200);
         }
-        DB::beginTransaction();
-        try {
-            $data = [
-                'nombre' => $request->nombre,
-                'email' => $request->email,
-                'telefono' => $request->telefono,
-                'direccion' => $request->direccion,
-            ];
 
-            $query = Proveedores::create($data);
-            DB::commit();
-            return response([
-                'res' => true,
-                'msg' => $query->id
-            ], 200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response([
-                'res' => false,
-                'msg' => $e->getMessage()
-            ], 200);
-        }
+        $data = [
+            'nombre' => $request->nombre,
+            'email' => $request->email,
+            'telefono' => $request->telefono,
+            'direccion' => $request->direccion,
+        ];
+
+        $query = Proveedores::create($data);
+        return redirect(route('proveedores-index'));
     }
     public function Listar()
     {
@@ -82,10 +70,7 @@ class ProveedoresController extends Controller
             $registro->telefono = $request->telefono;
             $registro->direccion = $request->direccion;
             $registro->save();
-            return response([
-                'res' => true,
-                'msg' => "Registro actualizado correctamente"
-            ], 200);
+            return redirect(route('proveedores-index'));
         }
 
         return response([
@@ -112,21 +97,8 @@ class ProveedoresController extends Controller
                 'msg' => "El proveedor no existe."
             ], 200);
         }
+        Proveedores::where('id', "=", $request->id)->delete();
 
-        DB::beginTransaction();
-        try {
-            Proveedores::where('id', "=", $request->id)->delete();
-            DB::commit();
-            return response([
-                'res' => true,
-                'msg' => "El proveedor se elimino exitosamente."
-            ], 200);
-        } catch (Exception $e) {
-            DB::rollback();
-            return response([
-                'res' => false,
-                'msg' => $e->getMessage()
-            ], 200);
-        }
+        return redirect(route('proveedores-index'));
     }
 }
