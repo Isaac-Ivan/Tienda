@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Cuaderno extends Model
 {
+    use  HasFactory;
     protected $table = 'cuadernos';
     protected $fillable =
     [

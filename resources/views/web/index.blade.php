@@ -17,6 +17,10 @@
                 <h3>{{ $chart3->options['chart_title'] }}</h3>
                 {!! $chart3->renderHtml() !!}
             </div>
+            <div class="col-sm-5 border border-1   bg-graficas" >
+                <h3>{{ $chart4->options['chart_title'] }}</h3>
+                {!! $chart4->renderHtml() !!}
+            </div>
 
         </div>
     </div>
@@ -25,10 +29,7 @@
 @section('scripts')
     {!! $chart->renderChartJsLibrary() !!}
     {!! $chart->renderJs() !!}
-
-    {!! $chart2->renderChartJsLibrary() !!}
     {!! $chart2->renderJs() !!}
-
-    {!! $chart3->renderChartJsLibrary() !!}
     {!! $chart3->renderJs() !!}
+    {!! $chart4->renderJs() !!}
 @endsection
